@@ -19,7 +19,7 @@
         </div>
         <div class="pull-right">
           <button
-          @click="buyMax"
+          @click="quantity = max"
           class="btn btn-primary">
             Max ({{ max }})
           </button>
@@ -63,9 +63,6 @@ export default {
       };
       this.$store.dispatch('buyStocks', order);
       this.quantity = 0;
-    },
-    buyMax() {
-      this.quantity = Math.floor(this.funds / this.stock.price);
     }
   }
 };
