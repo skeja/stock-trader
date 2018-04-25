@@ -12,6 +12,11 @@
           <input type="number" class="form-control" min="0" placeholder="Quantity" v-model.number="quantity" :class="{ danger: insufitientQuantity }">
         </div>
         <div class="pull-right">
+           <button
+          @click="quantity = stock.quantity"
+          class="btn btn-primary">
+            Max ({{ stock.quantity }})
+          </button>
           <button
           class="btn btn-success"
           @click="sellStocks"
