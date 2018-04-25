@@ -19,10 +19,9 @@
         </div>
         <div class="pull-right">
           <button
-          class="btn btn-primary"
           @click="buyMax"
-          >
-            Buy max
+          class="btn btn-primary">
+            Max
           </button>
           <button
             :disabled="insufitientFunds || quantity <= 0 || !Number.isInteger(quantity)"
@@ -59,20 +58,11 @@ export default {
         stockPrice: this.stock.price,
         quantity: this.quantity
       };
-      console.log(order);
       this.$store.dispatch('buyStocks', order);
       this.quantity = 0;
     },
     buyMax() {
-      const order = {
-        stockId: this.stock.id,
-        stockPrice: this.stock.price,
-        quantity: Math.floor(this.funds / this.stock.price)
-      };
-      console.log(order);
-      confirm(`You are going to buy ${order.quantity} stocks of ${this.stock.name}. Are you sure?`);
-      this.$store.dispatch('buyStocks', order);
-      this.quantity = 0;
+      this.quantity = Math.floor(this.funds / this.stock.price);
     }
   }
 };
