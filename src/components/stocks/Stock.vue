@@ -21,7 +21,7 @@
           <button
           @click="buyMax"
           class="btn btn-primary">
-            Max
+            Max ({{ max }})
           </button>
           <button
             :disabled="insufitientFunds || quantity <= 0 || !Number.isInteger(quantity)"
@@ -48,6 +48,9 @@ export default {
     },
     insufitientFunds() {
       return this.quantity * this.stock.price > this.funds;
+    },
+    max() {
+      return Math.floor(this.funds / this.stock.price);
     }
   },
   props: ['stock'],
