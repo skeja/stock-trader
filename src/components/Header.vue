@@ -43,11 +43,11 @@ export default {
   },
   methods: {
     ...mapActions({
-      randomizeStocks: 'randomizeStocks',
+      nextDay: 'nextDay',
       fetchData: 'loadData'
     }),
     endDay() {
-      this.randomizeStocks();
+      this.nextDay();
     },
     saveData() {
       const data = {

@@ -11,6 +11,7 @@ const mutations = {
   'RND_STOCKS'(state) {
     state.stocks.forEach(stock => {
       stock.price = Math.round(stock.price * (1 + Math.random() - 0.5));
+      stock.history.push(stock.price);
     });
   }
 };
@@ -22,7 +23,7 @@ const actions = {
   initStocks: ({ commit }) => {
     commit('SET_STOCKS', stocks);
   },
-  randomizeStocks: ({ commit }) => {
+  nextDay: ({ commit }) => {
     commit('RND_STOCKS');
   }
 };
@@ -30,6 +31,9 @@ const actions = {
 const getters = {
   stocks: state => {
     return state.stocks;
+  },
+  history: state => {
+    return state.stocks.history;
   }
 };
 
