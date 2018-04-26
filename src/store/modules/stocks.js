@@ -1,18 +1,23 @@
 import stocks from '../../data/stocks';
 
 const state = {
-  stocks: []
+  stocks: [],
+  day: 1
 };
 
 const mutations = {
   'SET_STOCKS'(state, stocks) {
     state.stocks = stocks;
   },
+  'SET_DAY'(state, day) {
+    state.day = day;
+  },
   'RND_STOCKS'(state) {
     state.stocks.forEach(stock => {
       stock.price = Math.round(stock.price * (1 + Math.random() - 0.5));
       stock.history.push(stock.price);
     });
+    state.day += 1;
   }
 };
 
@@ -34,6 +39,9 @@ const getters = {
   },
   history: state => {
     return state.stocks.history;
+  },
+  days: state => {
+    return state.day;
   }
 };
 

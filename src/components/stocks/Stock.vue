@@ -21,7 +21,8 @@
         <div class="pull-right">
           <button
           @click="quantity = max"
-          class="btn btn-primary">
+          class="btn btn-primary"
+          id="maxBuy">
             Max ({{ max }})
           </button>
           <button
@@ -85,5 +86,8 @@ export default {
     float: right;
     padding: 4px;
     margin: 1%;
+  }
+  input {
+    width: 150px;
   }
 </style>

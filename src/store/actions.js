@@ -8,13 +8,14 @@ export const loadData = ({ commit }) => {
         const stocks = data.stocks;
         const funds = data.funds;
         const stockPortfolio = data.stockPortfolio;
-
+        const day = data.day;
         const portfolio = {
           stockPortfolio,
           funds
         };
         commit('SET_STOCKS', stocks);
         commit('SET_PORTFOLIO', portfolio);
+        commit('SET_DAY', day);
       }
     });
 };

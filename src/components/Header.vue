@@ -14,7 +14,7 @@
       </ul>
       <strong class="navbar-text navbar-right">Funds: {{ funds | currency }}</strong>
       <ul class="nav navbar-nav navbar-right">
-        <li><a @click="endDay" href="#">End Day</a></li>
+        <li><a @click="endDay" href="#">End Day {{ days }}</a></li>
         <li class="dropdown" :class="{open: isDropdownOpen}" @click="isDropdownOpen = !isDropdownOpen">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Save & Load <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -39,6 +39,9 @@ export default {
   computed: {
     funds() {
       return this.$store.getters.funds;
+    },
+    days() {
+      return this.$store.getters.days;
     }
   },
   methods: {
@@ -53,7 +56,8 @@ export default {
       const data = {
         funds: this.$store.getters.funds,
         stockPortfolio: this.$store.getters.stockPortfolio,
-        stocks: this.$store.getters.stocks
+        stocks: this.$store.getters.stocks,
+        day: this.$store.getters.days
       };
       this.$http.put('data.json', data);
     },
